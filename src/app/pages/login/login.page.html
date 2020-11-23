@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title mode="md">
+      <img class="brand-logo" src="../../assets/revolt.svg" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card> 
+  <ion-card-header>
+    <ion-card-title>Login</ion-card-title>
+  </ion-card-header> 
+  <ion-card-content>
+    <form [formGroup]='userLogin' (ngSubmit)="login(userLogin.value)">
+      <ion-grid class="form-wrapper">
+        <ion-row>
+          <ion-item lines="none">
+            <ion-label position="floating">User e-mail</ion-label>
+            <ion-input id="email" type="email" placeholder="your@email.com" formControlName="email"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="userLogin.get('email').hasError(validation.type) && (userLogin.get('email').dirty || userLogin.get('email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row>
+          <ion-item lines="none">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="userLogin.get('password').hasError(validation.type) && (userLogin.get('password').dirty || userLogin.get('password').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row>
+          <ion-button class="btn-login" color="warning" size="large" type="submit" expand="block">Login</ion-button>
+        </ion-row>        
+      </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
+</ion-content>

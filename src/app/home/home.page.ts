@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
+import { MapActionsService } from '../services/map-actions.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,26 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  vehiclesList: Array<any> = [];
+  loadedVehiclesList: boolean = false;
+
+  constructor(private mapService: MapActionsService, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.getVehicles();
+  }
+
+  getVehicles(){
+    this.mapService.getVehicles().subscribe((data: any) => {
+      this.vehiclesList = data.vehicles;
+      this.loadedVehiclesList = true;
+    });
+  } 
+
+  logOut(){
+    this.authService.logout();
+  }
+
+  
 
 }

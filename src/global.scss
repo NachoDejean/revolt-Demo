@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
+
+.pop-wrapper {
+    color: #333;
+    span {
+        display: flex;
+        flex-flow: column;
+        font-size: small;
+        font-weight: bold;
+        margin: 5% 2.5%;
+    }
+
+}
+
+// BRANDING
+.brand-logo {
+    width: 75px;
+}
